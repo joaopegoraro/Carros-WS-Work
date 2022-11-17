@@ -4,6 +4,7 @@ import android.app.Application
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import xyz.joaophp.carroswswork.service.local.dao.CarroDao
 import xyz.joaophp.carroswswork.service.local.data.DBCarro
 import xyz.joaophp.carroswswork.service.local.data.DBLead
 
@@ -15,6 +16,7 @@ import xyz.joaophp.carroswswork.service.local.data.DBLead
     version = 1
 )
 abstract class CarrosDatabase : RoomDatabase() {
+    abstract fun carroDao(): CarroDao
 
     companion object {
         private const val DATABASE_NAME = "carros_wswork_database"

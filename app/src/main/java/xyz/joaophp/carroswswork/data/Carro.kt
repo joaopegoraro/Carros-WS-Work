@@ -10,5 +10,7 @@ data class Carro(
     val numeroPortas: Int,
     val valorFipe: Int,
     val cor: String,
-    val timestampCadastro: Long
+    val timestampCadastro: Long,
+    val salvo: Boolean,
+    val timestampSalvamento: Long,
 )

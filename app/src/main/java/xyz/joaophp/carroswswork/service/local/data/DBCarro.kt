@@ -18,11 +18,14 @@ data class DBCarro(
     @ColumnInfo(name = NUMERO_PORTAS) val numeroPortas: Int? = null,
     @ColumnInfo(name = VALOR_FIPE) val valorFipe: Int? = null,
     @ColumnInfo(name = COR) val cor: String? = null,
-    @ColumnInfo(name = TIMESTAMP_CADASTRO) val timestampCadastro: Long? = null
+    @ColumnInfo(name = TIMESTAMP_CADASTRO) val timestampCadastro: Long? = null,
+    @ColumnInfo(name = SALVO) val salvo: Boolean? = false,
+    @ColumnInfo(name = TIMESTAMP_SALVAMENTO) val timestampSalvamento: Long? = null,
 ) {
 
     companion object {
         const val CARRO_TABLE = "carro"
+        const val ID = "id"
         const val MARCA_ID = "marca_id"
         const val MARCA_NOME = "marca_nome"
         const val NOME_MODELO = "nome_modelo"
@@ -32,5 +35,7 @@ data class DBCarro(
         const val VALOR_FIPE = "valor_fipe"
         const val COR = "cor"
         const val TIMESTAMP_CADASTRO = "timestamp_cadastro"
+        const val SALVO = "salvo"
+        const val TIMESTAMP_SALVAMENTO = "timestamp_salvamento"
     }
 }
