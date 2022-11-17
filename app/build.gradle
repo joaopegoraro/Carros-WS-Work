@@ -28,6 +28,7 @@ android {
         debug {
             applicationIdSuffix ".debug"
             debuggable true
+            buildConfigField "String", 'ENDPOINT', "\"https://www.wswork.com.br/\""
         }
 
         release {
@@ -35,6 +36,7 @@ android {
             minifyEnabled true
             shrinkResources true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            buildConfigField "String", 'ENDPOINT', "\"https://www.wswork.com.br/\""
         }
     }
     compileOptions {
