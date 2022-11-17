@@ -1,4 +1,4 @@
-package xyz.joaophp.carroswswork.service.data
+package xyz.joaophp.carroswswork.data
 
 import com.google.gson.annotations.SerializedName
 

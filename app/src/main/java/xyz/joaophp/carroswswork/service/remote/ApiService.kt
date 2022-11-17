@@ -4,9 +4,11 @@ import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.POST
-import xyz.joaophp.carroswswork.service.data.Carro
-import xyz.joaophp.carroswswork.service.data.Lead
-import xyz.joaophp.carroswswork.service.data.ReturnPost
+import xyz.joaophp.carroswswork.data.Carro
+import xyz.joaophp.carroswswork.data.Lead
+import xyz.joaophp.carroswswork.service.remote.data.NetworkCarro
+import xyz.joaophp.carroswswork.service.remote.data.NetworkLead
+import xyz.joaophp.carroswswork.service.remote.data.ReturnPost
 
 interface ApiService {
 
@@ -15,7 +17,7 @@ interface ApiService {
      */
 
     @GET("cars.json")
-    suspend fun getCarros(): Response<List<Carro>>
+    suspend fun getCarros(): Response<List<NetworkCarro>>
 
 
     /**
@@ -23,5 +25,5 @@ interface ApiService {
      */
 
     @POST("cars/leads")
-    suspend fun postLeads(@Body leads: List<Lead>): Response<ReturnPost>
+    suspend fun postLeads(@Body leads: List<NetworkLead>): Response<ReturnPost>
 }

@@ -1,8 +1,8 @@
-package xyz.joaophp.carroswswork.service.data
+package xyz.joaophp.carroswswork.service.remote.data
 
 import com.google.gson.annotations.SerializedName
 
-data class Carro(
+data class NetworkCarro(
     @SerializedName("id") val id: Int,
     @SerializedName("marca_id") val marcaId: Int? = null,
     @SerializedName("marca_nome") val marcaNome: String? = null,

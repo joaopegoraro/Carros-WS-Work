@@ -6,6 +6,7 @@ import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.startKoin
 import org.koin.core.context.stopKoin
 import org.koin.core.logger.Level
+import xyz.joaophp.carroswswork.di.databaseModule
 import xyz.joaophp.carroswswork.di.networkModule
 
 class CarrosApplication : Application() {
@@ -27,6 +28,9 @@ class CarrosApplication : Application() {
     }
 
     companion object {
-        private val modules = listOf(networkModule)
+        private val modules = listOf(
+            databaseModule,
+            networkModule
+        )
     }
 }
