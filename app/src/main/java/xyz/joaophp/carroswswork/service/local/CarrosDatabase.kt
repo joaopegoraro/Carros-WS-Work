@@ -4,9 +4,14 @@ import android.app.Application
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import xyz.joaophp.carroswswork.service.local.data.DBCarro
+import xyz.joaophp.carroswswork.service.local.data.DBLead
 
 @Database(
-    entities = [],
+    entities = [
+        DBCarro::class,
+        DBLead::class
+    ],
     version = 1
 )
 abstract class CarrosDatabase : RoomDatabase() {
