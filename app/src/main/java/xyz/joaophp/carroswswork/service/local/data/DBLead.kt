@@ -11,7 +11,8 @@ data class DBLead(
     val carroId: Int,
 
     @ColumnInfo(name = EMAIL_USUARIO) val emailUsuario: String? = null,
-    @ColumnInfo(name = TELEFONE_USUARIO) val telefoneUsuario: String? = null
+    @ColumnInfo(name = TELEFONE_USUARIO) val telefoneUsuario: String? = null,
+    @ColumnInfo(name = TIMESTAMP) val timestamp: Long? = null
 ) {
 
     companion object {
@@ -19,5 +20,6 @@ data class DBLead(
         const val CARRO_ID = "carro_id"
         const val EMAIL_USUARIO = "email_usuario"
         const val TELEFONE_USUARIO = "telefone_usuario"
+        const val TIMESTAMP = "timestamp"
     }
 }
