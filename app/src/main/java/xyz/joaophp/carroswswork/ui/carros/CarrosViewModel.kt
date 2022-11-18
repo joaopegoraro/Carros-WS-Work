@@ -15,18 +15,19 @@ class CarrosViewModel(
     )
 
     fun atualizarLista(
+        setLoading: (Boolean) -> Unit = { state.isLoading = it },
         onSuccess: () -> Unit = {},
         onFailure: (ApiResult.Error) -> Unit = {}
     ) {
-        state.isLoading = true
+        setLoading(true)
         viewModelScope.launch {
             carroRepository.buscarCarros(
                 onSuccess = {
-                    state.isLoading = false
+                    setLoading(false)
                     onSuccess()
                 },
                 onFailure = { err ->
-                    state.isLoading = false
+                    setLoading(false)
                     onFailure(err)
                 }
             )

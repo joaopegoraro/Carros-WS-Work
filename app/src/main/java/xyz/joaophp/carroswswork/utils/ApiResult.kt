@@ -1,5 +1,6 @@
 package xyz.joaophp.carroswswork.utils
 
+import android.util.Log
 import retrofit2.Response
 import java.net.ConnectException
 import java.net.UnknownHostException
@@ -18,12 +19,14 @@ sealed interface ApiResult<out T> {
         suspend fun <T> getResultFor(apiMethod: suspend () -> Response<T>): ApiResult<T?> {
             return try {
                 val response = apiMethod()
+                Log.d("TESTE", response.raw().toString())
                 when (response.code()) {
                     in 200..300 -> Success(data = response.body())
                     in 500..600 -> Error.ErroServidor
                     else -> Error.ErroDesconhecido
                 }
             } catch (e: Exception) {
+                Log.d("TESTE", e.stackTraceToString())
                 if (e is ConnectException || e is UnknownHostException) {
                     Error.FalhaConexao
                 } else {

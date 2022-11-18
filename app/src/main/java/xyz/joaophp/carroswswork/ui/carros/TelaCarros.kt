@@ -1,8 +1,8 @@
 package xyz.joaophp.carroswswork.ui.carros
 
 import android.content.Context
+import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.Card
@@ -11,12 +11,16 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
+import com.google.accompanist.swiperefresh.SwipeRefresh
+import com.google.accompanist.swiperefresh.SwipeRefreshIndicator
+import com.google.accompanist.swiperefresh.rememberSwipeRefreshState
 import kotlinx.coroutines.launch
 import org.koin.androidx.compose.getViewModel
 import xyz.joaophp.carroswswork.data.Carro
 import xyz.joaophp.carroswswork.R
 import xyz.joaophp.carroswswork.utils.ApiResult
 
+@OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun TelaCarros(
     modifier: Modifier = Modifier,
@@ -37,30 +41,48 @@ fun TelaCarros(
         )
     }
 
-    val carros by state.carros.collectAsState(initial = emptyList())
-    LazyColumn(modifier = modifier) {
-        items(carros) { carro ->
-            CarroListItem(
-                carro = carro,
-                salvarCarro = {
-                    // TODO
-                },
-                excluirCarro = {
-                    // TODo
+    SwipeRefresh(
+        modifier = modifier,
+        state = rememberSwipeRefreshState(state.isLoadingSwipeToRefresh),
+        indicator = { swipeState, trigger -> SwipeRefreshIndicator(swipeState, trigger) },
+        onRefresh = {
+            viewModel.atualizarLista(
+                setLoading = { state.isLoadingSwipeToRefresh = it },
+                onFailure = { erro ->
+                    snackbarScope.launch {
+                        scaffoldState.snackbarHostState.showSnackbar(context.getMensagemErro(erro))
+                    }
                 }
             )
+        }
+    ) {
+        val carros by state.carros.collectAsState(initial = emptyList())
+        LazyColumn() {
+            items(carros) { carro ->
+                CarroListItem(
+                    modifier = Modifier.animateItemPlacement(),
+                    carro = carro,
+                    salvarCarro = {
+                        // TODO
+                    },
+                    excluirCarro = {
+                        // TODo
+                    }
+                )
+            }
         }
     }
 }
 
 @Composable
 private fun CarroListItem(
+    modifier: Modifier = Modifier,
     carro: Carro,
     salvarCarro: (Carro) -> Unit,
     excluirCarro: (Carro) -> Unit
 ) {
     Card(
-        modifier = Modifier.fillMaxWidth()
+        modifier = modifier.fillMaxWidth()
     ) {
         Text(carro.nomeModelo.ifEmpty { "SEM NOME" })
     }

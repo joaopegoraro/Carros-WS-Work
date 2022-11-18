@@ -10,4 +10,5 @@ data class CarrosState(
     val carros: Flow<List<Carro>>
 ) {
     var isLoading by mutableStateOf(false)
+    var isLoadingSwipeToRefresh by mutableStateOf(false)
 }
