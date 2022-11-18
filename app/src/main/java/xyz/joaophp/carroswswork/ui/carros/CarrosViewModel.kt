@@ -15,8 +15,8 @@ class CarrosViewModel(
     )
 
     fun atualizarLista(
-        onSuccess: () -> Unit,
-        onFailure: (ApiResult.Error) -> Unit
+        onSuccess: () -> Unit = {},
+        onFailure: (ApiResult.Error) -> Unit = {}
     ) {
         state.isLoading = true
         viewModelScope.launch {

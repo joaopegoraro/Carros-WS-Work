@@ -14,7 +14,7 @@ object NetworkCarroMapper {
             ano = ano ?: 0,
             combustivel = combustivel ?: "",
             numeroPortas = numeroPortas ?: 2,
-            valorFipe = valorFipe ?: 0,
+            valorFipe = valorFipe ?: 0.0,
             cor = cor ?: "",
             timestampCadastro = timestampCadastro ?: 0
         )
@@ -23,6 +23,26 @@ object NetworkCarroMapper {
     fun List<NetworkCarro>?.toCarros(): List<Carro> {
         return this?.map { it.toCarro() } ?: emptyList()
     }
+
+    fun NetworkCarro.toEntity(): DBCarro {
+        return DBCarro(
+            id = id,
+            marcaId = marcaId ?: -1,
+            marcaNome = marcaNome ?: "",
+            nomeModelo = nomeModelo ?: "",
+            ano = ano ?: 0,
+            combustivel = combustivel ?: "",
+            numeroPortas = numeroPortas ?: 2,
+            valorFipe = valorFipe ?: 0.0,
+            cor = cor ?: "",
+            timestampCadastro = timestampCadastro ?: 0
+        )
+    }
+
+    fun List<NetworkCarro>?.toEntities(): List<DBCarro> {
+        return this?.map { it.toEntity() } ?: emptyList()
+    }
+
 }
 
 
@@ -57,7 +77,7 @@ object DBCarroMapper {
             ano = ano ?: 0,
             combustivel = combustivel ?: "",
             numeroPortas = numeroPortas ?: 2,
-            valorFipe = valorFipe ?: 0,
+            valorFipe = valorFipe ?: 0.0,
             cor = cor ?: "",
             timestampCadastro = timestampCadastro ?: 0
         )

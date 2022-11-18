@@ -16,7 +16,7 @@ data class DBCarro(
     @ColumnInfo(name = ANO) val ano: Int? = null,
     @ColumnInfo(name = COMBUSTIVEL) val combustivel: String? = null,
     @ColumnInfo(name = NUMERO_PORTAS) val numeroPortas: Int? = null,
-    @ColumnInfo(name = VALOR_FIPE) val valorFipe: Int? = null,
+    @ColumnInfo(name = VALOR_FIPE) val valorFipe: Double? = null,
     @ColumnInfo(name = COR) val cor: String? = null,
     @ColumnInfo(name = TIMESTAMP_CADASTRO) val timestampCadastro: Long? = null
 ) {

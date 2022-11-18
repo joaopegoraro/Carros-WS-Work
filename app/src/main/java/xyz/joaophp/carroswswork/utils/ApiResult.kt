@@ -16,8 +16,8 @@ sealed interface ApiResult<out T> {
 
     companion object {
         suspend fun <T> getResultFor(apiMethod: suspend () -> Response<T>): ApiResult<T?> {
-            val response = apiMethod()
             return try {
+                val response = apiMethod()
                 when (response.code()) {
                     in 200..300 -> Success(data = response.body())
                     in 500..600 -> Error.ErroServidor

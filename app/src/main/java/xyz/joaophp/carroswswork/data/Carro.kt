@@ -8,7 +8,7 @@ data class Carro(
     val ano: Int,
     val combustivel: String,
     val numeroPortas: Int,
-    val valorFipe: Int,
+    val valorFipe: Double,
     val cor: String,
     val timestampCadastro: Long
 )

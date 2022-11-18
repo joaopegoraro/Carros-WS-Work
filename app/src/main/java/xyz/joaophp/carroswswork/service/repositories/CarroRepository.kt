@@ -4,9 +4,8 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.mapNotNull
 import xyz.joaophp.carroswswork.data.Carro
 import xyz.joaophp.carroswswork.service.local.dao.CarroDao
-import xyz.joaophp.carroswswork.service.mappers.CarroMapper.toEntities
 import xyz.joaophp.carroswswork.service.mappers.DBCarroMapper.toCarros
-import xyz.joaophp.carroswswork.service.mappers.NetworkCarroMapper.toCarros
+import xyz.joaophp.carroswswork.service.mappers.NetworkCarroMapper.toEntities
 import xyz.joaophp.carroswswork.service.remote.ApiService
 import xyz.joaophp.carroswswork.utils.ApiResult
 
@@ -22,8 +21,7 @@ class CarroRepository(
         when (val result = ApiResult.getResultFor { remoteDataSource.getCarros() }) {
             is ApiResult.Success -> {
                 val networkCarros = result.data
-                val carros = networkCarros.toCarros()
-                val carrosEntities = carros.toEntities()
+                val carrosEntities = networkCarros.toEntities()
                 localDataSource.insertAll(carrosEntities)
                 onSuccess()
             }

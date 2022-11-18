@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">Carros WS Work</string>
+
+    <!-- Tela Carros -->
+    <string name="erro_desconhecido_buscar_carros">Ocorreu um erro desconhecido ao tentar atualizar a lista de carros. Entre em contato com o desenvolvedor ou tente novamente mais tarde.</string>
+    <string name="falha_conexao_buscar_carros">Não foi possível atualizar a lista de carros. Verifique sua internet e tente novamente</string>
+    <string name="erro_servidor_buscar_carros">Ocorreu um erro ao tentar se conectar com o servidor ao atualizar a lista de carros. Entre em contato com o desenvolvedor ou tente novamente mais tarde.</string>
+
+
 </resources>

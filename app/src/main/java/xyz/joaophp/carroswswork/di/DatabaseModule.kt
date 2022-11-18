@@ -8,4 +8,12 @@ val databaseModule = module {
     single {
         CarrosDatabase.build(androidApplication())
     }
+
+    single {
+        get<CarrosDatabase>().carroDao()
+    }
+
+    single {
+        get<CarrosDatabase>().leadDao()
+    }
 }

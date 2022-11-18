@@ -1,9 +1,9 @@
 package xyz.joaophp.carroswswork.service.local.dao
 
 import androidx.room.Dao
+import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import androidx.room.Update
 import kotlinx.coroutines.flow.Flow
 import xyz.joaophp.carroswswork.service.local.data.DBCarro
 import xyz.joaophp.carroswswork.service.local.data.DBCarro.Companion.CARRO_TABLE
@@ -30,14 +30,14 @@ interface CarroDao {
      *  INSERT
      */
 
-    @Update(onConflict = OnConflictStrategy.REPLACE)
-    fun insertAll(carros: List<DBCarro>)
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insertAll(carros: List<DBCarro>)
 
     /**
      *   DELETE
      */
 
     @Query("DELETE FROM $CARRO_TABLE")
-    fun clear()
+    suspend fun clear()
 
 }
