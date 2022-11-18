@@ -8,6 +8,8 @@ import org.koin.core.context.stopKoin
 import org.koin.core.logger.Level
 import xyz.joaophp.carroswswork.di.databaseModule
 import xyz.joaophp.carroswswork.di.networkModule
+import xyz.joaophp.carroswswork.di.repositoryModule
+import xyz.joaophp.carroswswork.di.viewModelModule
 
 class CarrosApplication : Application() {
 
@@ -30,7 +32,9 @@ class CarrosApplication : Application() {
     companion object {
         private val modules = listOf(
             databaseModule,
-            networkModule
+            networkModule,
+            repositoryModule,
+            viewModelModule
         )
     }
 }
