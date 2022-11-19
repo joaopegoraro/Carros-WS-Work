@@ -256,13 +256,9 @@ private fun BotaoDrawer(
 ) {
     Row(
         modifier = Modifier
+            .clickable(onClick = navigate)
             .padding(16.dp)
-            .fillMaxWidth()
-            .clickable(
-                indication = null,
-                interactionSource = remember { MutableInteractionSource() },
-                onClick = navigate
-            ),
+            .fillMaxWidth(),
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.SpaceBetween
     ) {

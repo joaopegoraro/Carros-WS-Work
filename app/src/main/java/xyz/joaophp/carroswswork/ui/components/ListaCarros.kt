@@ -2,9 +2,7 @@ package xyz.joaophp.carroswswork.ui.components
 
 import androidx.compose.animation.animateContentSize
 import androidx.compose.animation.core.*
-import androidx.compose.foundation.ExperimentalFoundationApi
-import androidx.compose.foundation.Image
-import androidx.compose.foundation.clickable
+import androidx.compose.foundation.*
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
@@ -19,6 +17,9 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.google.accompanist.swiperefresh.SwipeRefresh
+import com.google.accompanist.swiperefresh.SwipeRefreshIndicator
+import com.google.accompanist.swiperefresh.rememberSwipeRefreshState
 import xyz.joaophp.carroswswork.R
 import xyz.joaophp.carroswswork.data.Carro
 import xyz.joaophp.carroswswork.data.Lead
@@ -27,26 +28,47 @@ import java.util.*
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun ListaCarros(
+    modifier: Modifier = Modifier,
     carros: List<Carro>,
     leads: List<Lead>,
+    swipeToRefreshEnabled: Boolean,
+    isLoadingOnRefresh: Boolean = false,
+    onRefresh: () -> Unit = {},
+    noResultsFound: @Composable () -> Unit,
     botaoListItem: @Composable (carro: Carro, carroSalvo: Boolean) -> Unit
 ) {
-    LazyColumn(
-        modifier = Modifier.fillMaxSize()
+    SwipeRefresh(
+        modifier = modifier,
+        swipeEnabled = swipeToRefreshEnabled,
+        state = rememberSwipeRefreshState(isLoadingOnRefresh),
+        indicator = { swipeState, trigger -> SwipeRefreshIndicator(swipeState, trigger) },
+        onRefresh = onRefresh
     ) {
-        items(items = carros) { carro ->
-            val carroSalvo by remember(leads, carros) {
-                derivedStateOf {
-                    carro.id in leads.map(Lead::carroId)
+        if (carros.isEmpty()) {
+            Column(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .verticalScroll(rememberScrollState())
+            ) {
+                noResultsFound()
+            }
+        } else {
+            LazyColumn(modifier = Modifier.fillMaxSize()) {
+                items(items = carros) { carro ->
+                    val carroSalvo by remember(leads, carros) {
+                        derivedStateOf {
+                            carro.id in leads.map(Lead::carroId)
+                        }
+                    }
+                    CarroListItem(
+                        modifier = Modifier.animateItemPlacement(),
+                        carro = carro,
+                        botao = {
+                            botaoListItem(carro, carroSalvo)
+                        }
+                    )
                 }
             }
-            CarroListItem(
-                modifier = Modifier.animateItemPlacement(),
-                carro = carro,
-                botao = {
-                    botaoListItem(carro, carroSalvo)
-                }
-            )
         }
     }
 }
@@ -190,5 +212,5 @@ private fun getLogomarca(marca: String): Painter {
             painterResource(R.drawable.logows)
         }
     }
-
 }
+

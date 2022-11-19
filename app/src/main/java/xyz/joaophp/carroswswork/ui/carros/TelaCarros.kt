@@ -5,25 +5,28 @@ import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.animateContentSize
 import androidx.compose.animation.core.*
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Refresh
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.scale
+import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
-import com.google.accompanist.swiperefresh.SwipeRefresh
-import com.google.accompanist.swiperefresh.SwipeRefreshIndicator
-import com.google.accompanist.swiperefresh.rememberSwipeRefreshState
 import kotlinx.coroutines.launch
 import org.koin.androidx.compose.getViewModel
 import xyz.joaophp.carroswswork.R
 import xyz.joaophp.carroswswork.ui.CarroViewModel
 import xyz.joaophp.carroswswork.ui.components.ListaCarros
+import xyz.joaophp.carroswswork.ui.components.NoResultsFoundLayout
 import xyz.joaophp.carroswswork.ui.theme.wsPink
 import xyz.joaophp.carroswswork.ui.theme.wsWhite
 import xyz.joaophp.carroswswork.utils.ApiResult
@@ -54,38 +57,47 @@ fun TelaCarros(
         )
     }
 
-    SwipeRefresh(
-        modifier = modifier,
-        state = rememberSwipeRefreshState(state.isLoadingSwipeToRefresh),
-        indicator = { swipeState, trigger -> SwipeRefreshIndicator(swipeState, trigger) },
-        onRefresh = {
-            viewModel.atualizarLista(
-                setLoading = { state.isLoadingSwipeToRefresh = it },
-                onFailure = { erro ->
-                    snackbarScope.launch {
-                        scaffoldState.snackbarHostState.showSnackbar(context.getMensagemErro(erro))
-                    }
+    val onRefresh = {
+        viewModel.atualizarLista(
+            setLoading = { state.isLoadingSwipeToRefresh = it },
+            onFailure = { erro ->
+                snackbarScope.launch {
+                    scaffoldState.snackbarHostState.showSnackbar(context.getMensagemErro(erro))
                 }
-            )
-        }
-    ) {
-        ListaCarros(
-            carros = carros,
-            leads = leads,
-            botaoListItem = { carro, carroSalvoBanco ->
-                BotaoSalvar(
-                    carroSalvoBanco = carroSalvoBanco,
-                    salvarCarro = {
-                        viewModel.favoritarCarro(carro)
-                    },
-                    excluirCarro = {
-                        viewModel.removerFavoritoCarro(carro)
-                    }
-                )
-
             }
         )
     }
+
+    ListaCarros(
+        modifier = modifier,
+        carros = carros,
+        leads = leads,
+        swipeToRefreshEnabled = true,
+        isLoadingOnRefresh = state.isLoadingSwipeToRefresh,
+        noResultsFound = {
+            NoResultsFoundLayout(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .padding(32.dp),
+                icon = rememberVectorPainter(Icons.Default.Refresh),
+                text = stringResource(R.string.lista_carros_vazia),
+                onClick = onRefresh
+            )
+        },
+        onRefresh = onRefresh,
+        botaoListItem = { carro, carroSalvoBanco ->
+            BotaoSalvar(
+                carroSalvoBanco = carroSalvoBanco,
+                salvarCarro = {
+                    viewModel.favoritarCarro(carro)
+                },
+                excluirCarro = {
+                    viewModel.removerFavoritoCarro(carro)
+                }
+            )
+
+        }
+    )
 }
 
 @Composable

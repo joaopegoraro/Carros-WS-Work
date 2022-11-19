@@ -16,6 +16,7 @@
     <string name="numero_portas">%d portas</string>
     <string name="preco_label">R$ %.2f</string>
     <string name="eu_quero">Eu quero!</string>
+    <string name="lista_carros_vazia">Nenhum carro encontrado</string>
 
     <!-- Topbar -->
     <string name="cs_logo_ws">Logo WS Work</string>
@@ -30,6 +31,9 @@
     <string name="minha_lista">Minha lista</string>
     <string name="cadastre_seu_email">Cadastre com seu email para poder sincronizar sua lista de favoritos com o nosso site!</string>
     <string name="email_invalido">Por favor, digite um endereço de e-mail válido</string>
+
+    <!-- Minha Lista -->
+    <string name="minha_lista_vazia">Você ainda não adicionou nenhum carro na sua lista</string>
 
 
 </resources>
