@@ -1,3 +1,20 @@
 <resources>
     <string name="app_name">Carros WS Work</string>
+
+    <!-- Carros -->
+    <string name="erro_desconhecido_buscar_carros">Ocorreu um erro desconhecido ao tentar atualizar a lista de carros. Entre em contato com o desenvolvedor ou tente novamente mais tarde.</string>
+    <string name="falha_conexao_buscar_carros">Não foi possível atualizar a lista de carros. Verifique sua internet e tente novamente</string>
+    <string name="erro_servidor_buscar_carros">Ocorreu um erro ao tentar se conectar com o servidor ao atualizar a lista de carros. Entre em contato com o desenvolvedor ou tente novamente mais tarde.</string>
+    <string name="cs_logomarca_carro">Logomarca %s</string>
+    <string name="marca_desconhecida">Marca desconhecida</string>
+    <string name="ano_label">Ano: %s</string>
+    <string name="modelo_desconhecida">Modelo desconhecida</string>
+    <string name="desconhecido">Desconhecido</string>
+    <string name="combustivel_label">Combustível %s</string>
+    <string name="nao_informado">Não informado</string>
+    <string name="numero_portas">%d portas</string>
+    <string name="preco_label">R$ %.2f</string>
+    <string name="eu_quero">Eu quero!</string>
+
+
 </resources>
