@@ -8,7 +8,7 @@ data class NetworkCarro(
     @SerializedName("marca_nome") val marcaNome: String? = null,
     @SerializedName("nome_modelo") val nomeModelo: String? = null,
     @SerializedName("ano") val ano: Int? = null,
-    @SerializedName("combustível") val combustivel: String? = null,
+    @SerializedName("combustivel") val combustivel: String? = null,
     @SerializedName("num_portas") val numeroPortas: Int? = null,
     @SerializedName("valor_fipe") val valorFipe: Double? = null,
     @SerializedName("cor") val cor: String? = null,

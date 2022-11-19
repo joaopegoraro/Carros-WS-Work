@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">Carros WS Work</string>
+    <string name="post_leads_worker">post_leads_worker</string>
 
     <!-- Carros -->
     <string name="erro_desconhecido_buscar_carros">Ocorreu um erro desconhecido ao tentar atualizar a lista de carros. Entre em contato com o desenvolvedor ou tente novamente mais tarde.</string>
@@ -10,7 +11,7 @@
     <string name="ano_label">Ano: %s</string>
     <string name="modelo_desconhecida">Modelo desconhecida</string>
     <string name="desconhecido">Desconhecido</string>
-    <string name="combustivel_label">Combustível %s</string>
+    <string name="combustivel_label">Combustível: %s</string>
     <string name="cor_label">Cor: %s</string>
     <string name="nao_informado">Não informado</string>
     <string name="numero_portas">%d portas</string>

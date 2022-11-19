@@ -59,6 +59,7 @@ class CarroViewModel(
                 timestamp = System.currentTimeMillis()
             )
             leadRepository.adicionar(lead)
+            leadRepository.enviarLead(lead)
         }
     }
 

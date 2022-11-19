@@ -44,6 +44,18 @@ object LeadMapper {
     fun List<Lead>?.toEntities(): List<DBLead> {
         return this?.map { it.toEntity() } ?: emptyList()
     }
+
+    fun Lead.toNetworkLead(): NetworkLead {
+        return NetworkLead(
+            emailUsuario = emailUsuario,
+            carroId = carroId,
+            timestamp = timestamp
+        )
+    }
+
+    fun List<Lead>?.toNetworkLeads(): List<NetworkLead> {
+        return this?.map { it.toNetworkLead() } ?: emptyList()
+    }
 }
 
 object DBLeadMapper {

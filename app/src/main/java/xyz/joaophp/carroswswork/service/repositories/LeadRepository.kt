@@ -1,6 +1,5 @@
 package xyz.joaophp.carroswswork.service.repositories
 
-import android.util.Log
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.firstOrNull
 import kotlinx.coroutines.flow.map
@@ -9,7 +8,10 @@ import xyz.joaophp.carroswswork.service.local.dao.LeadDao
 import xyz.joaophp.carroswswork.service.mappers.DBLeadMapper.toLeads
 import xyz.joaophp.carroswswork.service.mappers.DBLeadMapper.toNetworkLeads
 import xyz.joaophp.carroswswork.service.mappers.LeadMapper.toEntity
+import xyz.joaophp.carroswswork.service.mappers.LeadMapper.toNetworkLead
 import xyz.joaophp.carroswswork.service.remote.ApiService
+import xyz.joaophp.carroswswork.service.remote.data.ReturnPost
+import xyz.joaophp.carroswswork.utils.ApiResult
 
 class LeadRepository(
     private val localDataSource: LeadDao,
@@ -30,9 +32,15 @@ class LeadRepository(
         localDataSource.deleteWithCarroId(carroId)
     }
 
-    suspend fun enviarLeadsSalvas() {
+    suspend fun enviarLead(lead: Lead) {
+        val networkLead = lead.toNetworkLead()
+        remoteDataSource.postLeads(listOf(networkLead))
+    }
+
+    suspend fun enviarLeadsSalvas(): ApiResult<ReturnPost?>? {
         val entities = localDataSource.getAll().firstOrNull() ?: emptyList()
+        if (entities.isEmpty()) return null
         val networkLeads = entities.toNetworkLeads()
-        remoteDataSource.postLeads(networkLeads)
+        return ApiResult.getResultFor { remoteDataSource.postLeads(networkLeads) }
     }
 }
