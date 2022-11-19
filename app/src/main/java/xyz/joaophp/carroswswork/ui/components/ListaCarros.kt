@@ -167,7 +167,9 @@ private fun DetalhesCarro(
         Text(
             text = stringResource(
                 id = R.string.combustivel_label,
-                carro.combustivel.ifEmpty { stringResource(R.string.nao_informado) }
+                carro.combustivel.replaceFirstChar {
+                    if (it.isLowerCase()) it.titlecase(Locale.getDefault()) else it.toString()
+                }.ifEmpty { stringResource(R.string.nao_informado) }
             )
         )
         Text(
