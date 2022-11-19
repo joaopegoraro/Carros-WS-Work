@@ -31,6 +31,7 @@ import kotlinx.coroutines.launch
 import org.koin.androidx.compose.getViewModel
 import xyz.joaophp.carroswswork.R
 import xyz.joaophp.carroswswork.data.Carro
+import xyz.joaophp.carroswswork.ui.ViewModel
 import xyz.joaophp.carroswswork.ui.theme.wsPink
 import xyz.joaophp.carroswswork.ui.theme.wsWhite
 import xyz.joaophp.carroswswork.utils.ApiResult
@@ -41,7 +42,7 @@ import java.util.*
 fun TelaCarros(
     modifier: Modifier = Modifier,
     scaffoldState: ScaffoldState,
-    viewModel: CarrosViewModel = getViewModel()
+    viewModel: ViewModel = getViewModel()
 ) {
     val context = LocalContext.current
     val state = viewModel.state

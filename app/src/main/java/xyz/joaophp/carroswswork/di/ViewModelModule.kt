@@ -2,12 +2,13 @@ package xyz.joaophp.carroswswork.di
 
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
-import xyz.joaophp.carroswswork.ui.carros.CarrosViewModel
+import xyz.joaophp.carroswswork.ui.ViewModel
 
 val viewModelModule = module {
     viewModel {
-        CarrosViewModel(
-            carroRepository = get()
+        ViewModel(
+            carroRepository = get(),
+            perfilRepository = get()
         )
     }
 }

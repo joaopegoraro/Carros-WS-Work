@@ -16,4 +16,8 @@ val databaseModule = module {
     single {
         get<CarrosDatabase>().leadDao()
     }
+
+    single {
+        get<CarrosDatabase>().perfilDao()
+    }
 }
