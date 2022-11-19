@@ -20,5 +20,15 @@
     <string name="cs_logo_ws">Logo WS Work</string>
     <string name="cs_abrir_drawer">Abrir navegação lateral do aplicativo</string>
 
+    <!-- Drawer -->
+    <string name="editar">Editar</string>
+    <string name="edite_seu_email">Edite seu e-mail</string>
+    <string name="meus_dados">Meus dados</string>
+    <string name="escreva_aqui_seu_email">Escreva aqui seu e-mail</string>
+    <string name="carros">Carros</string>
+    <string name="minha_lista">Minha lista</string>
+    <string name="cadastre_seu_email">Cadastre com seu email para poder sincronizar sua lista de favoritos com o nosso site!</string>
+    <string name="email_invalido">Por favor, digite um endereço de e-mail válido</string>
+
 
 </resources>

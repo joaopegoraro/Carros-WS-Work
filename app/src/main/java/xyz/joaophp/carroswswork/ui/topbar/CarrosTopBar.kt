@@ -33,10 +33,8 @@ fun CarrosTopBar(scaffoldState: ScaffoldState) {
                 modifier = Modifier.align(Alignment.CenterStart),
                 abrirDrawer = {
                     drawerScope.launch {
-                        if (scaffoldState.drawerState.isOpen) {
-                            scaffoldState.drawerState.close()
-                        } else {
-                            scaffoldState.drawerState.open()
+                        scaffoldState.drawerState.apply {
+                            if (isClosed) open() else close()
                         }
                     }
                 }

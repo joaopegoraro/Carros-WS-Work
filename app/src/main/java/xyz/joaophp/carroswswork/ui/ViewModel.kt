@@ -1,17 +1,22 @@
-package xyz.joaophp.carroswswork.ui.carros
+package xyz.joaophp.carroswswork.ui
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import kotlinx.coroutines.flow.firstOrNull
 import kotlinx.coroutines.launch
+import xyz.joaophp.carroswswork.data.Perfil
 import xyz.joaophp.carroswswork.service.repositories.CarroRepository
+import xyz.joaophp.carroswswork.service.repositories.PerfilRepository
 import xyz.joaophp.carroswswork.utils.ApiResult
 
-class CarrosViewModel(
-    private val carroRepository: CarroRepository
+class ViewModel(
+    private val carroRepository: CarroRepository,
+    private val perfilRepository: PerfilRepository
 ) : ViewModel() {
 
     val state = CarrosState(
-        carros = carroRepository.listarCarros()
+        carros = carroRepository.listarCarros(),
+        perfil = perfilRepository.buscar()
     )
 
     fun atualizarLista(
@@ -31,6 +36,12 @@ class CarrosViewModel(
                     onFailure(err)
                 }
             )
+        }
+    }
+
+    fun atualizarPerfil(perfil: Perfil) {
+        viewModelScope.launch {
+            perfilRepository.atualizar(perfil)
         }
     }
 }
