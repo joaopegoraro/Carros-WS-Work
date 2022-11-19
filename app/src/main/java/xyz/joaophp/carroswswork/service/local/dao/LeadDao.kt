@@ -24,15 +24,15 @@ interface LeadDao {
      */
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insert(lead: List<DBLead>)
+    suspend fun insert(lead: DBLead)
 
     /**
      *   DELETE
      */
 
     @Query("DELETE FROM $LEAD_TABLE")
-    fun clear()
+    suspend fun clear()
 
-    @Query("DELETE FROM $LEAD_TABLE WHERE $CARRO_ID-:carroId")
-    fun deleteWithCarroId(carroId: Int)
+    @Query("DELETE FROM $LEAD_TABLE WHERE $CARRO_ID=:carroId")
+    suspend fun deleteWithCarroId(carroId: Int)
 }

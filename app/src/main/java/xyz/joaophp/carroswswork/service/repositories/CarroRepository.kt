@@ -36,4 +36,10 @@ class CarroRepository(
             entities.toCarros()
         }
     }
+
+    fun listarCarrosComId(ids: List<Int>): Flow<List<Carro>> {
+        return localDataSource.getAllWithId(ids).mapNotNull { entities ->
+            entities.toCarros()
+        }
+    }
 }

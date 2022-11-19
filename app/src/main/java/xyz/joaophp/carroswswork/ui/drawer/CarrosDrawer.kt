@@ -26,7 +26,7 @@ import kotlinx.coroutines.launch
 import org.koin.androidx.compose.getViewModel
 import xyz.joaophp.carroswswork.R
 import xyz.joaophp.carroswswork.data.Perfil
-import xyz.joaophp.carroswswork.ui.ViewModel
+import xyz.joaophp.carroswswork.ui.CarroViewModel
 import xyz.joaophp.carroswswork.ui.navigation.NavigationRoutes
 import java.util.regex.Pattern
 
@@ -34,7 +34,7 @@ import java.util.regex.Pattern
 fun CarrosDrawer(
     scaffoldState: ScaffoldState,
     navController: NavController,
-    viewModel: ViewModel = getViewModel(),
+    viewModel: CarroViewModel = getViewModel(),
 ) {
     val perfil = viewModel.state.perfil.collectAsState(initial = null)
     var email by remember(perfil.value?.email) {

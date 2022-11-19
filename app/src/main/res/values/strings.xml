@@ -11,6 +11,7 @@
     <string name="modelo_desconhecida">Modelo desconhecida</string>
     <string name="desconhecido">Desconhecido</string>
     <string name="combustivel_label">Combustível %s</string>
+    <string name="cor_label">Cor: %s</string>
     <string name="nao_informado">Não informado</string>
     <string name="numero_portas">%d portas</string>
     <string name="preco_label">R$ %.2f</string>
