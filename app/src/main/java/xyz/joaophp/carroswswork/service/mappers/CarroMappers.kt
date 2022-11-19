@@ -11,10 +11,14 @@ object NetworkCarroMapper {
             marcaId = marcaId ?: -1,
             marcaNome = marcaNome ?: "",
             nomeModelo = nomeModelo ?: "",
-            ano = ano ?: 0,
+            ano = ano,
             combustivel = combustivel ?: "",
             numeroPortas = numeroPortas ?: 2,
-            valorFipe = valorFipe ?: 0.0,
+            valorFipe = if (valorFipe != null && valorFipe < 2000) {
+                valorFipe.times(1000)
+            } else {
+                valorFipe
+            },
             cor = cor ?: "",
             timestampCadastro = timestampCadastro ?: 0
         )
@@ -30,10 +34,14 @@ object NetworkCarroMapper {
             marcaId = marcaId ?: -1,
             marcaNome = marcaNome ?: "",
             nomeModelo = nomeModelo ?: "",
-            ano = ano ?: 0,
+            ano = ano,
             combustivel = combustivel ?: "",
             numeroPortas = numeroPortas ?: 2,
-            valorFipe = valorFipe ?: 0.0,
+            valorFipe = if (valorFipe != null && valorFipe < 2000) {
+                valorFipe.times(1000)
+            } else {
+                valorFipe
+            },
             cor = cor ?: "",
             timestampCadastro = timestampCadastro ?: 0
         )
@@ -74,10 +82,10 @@ object DBCarroMapper {
             marcaId = marcaId ?: -1,
             marcaNome = marcaNome ?: "",
             nomeModelo = nomeModelo ?: "",
-            ano = ano ?: 0,
+            ano = ano,
             combustivel = combustivel ?: "",
             numeroPortas = numeroPortas ?: 2,
-            valorFipe = valorFipe ?: 0.0,
+            valorFipe = valorFipe,
             cor = cor ?: "",
             timestampCadastro = timestampCadastro ?: 0
         )

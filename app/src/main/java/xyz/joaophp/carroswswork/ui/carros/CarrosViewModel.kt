@@ -15,7 +15,7 @@ class CarrosViewModel(
     )
 
     fun atualizarLista(
-        setLoading: (Boolean) -> Unit = { state.isLoading = it },
+        setLoading: (Boolean) -> Unit = {},
         onSuccess: () -> Unit = {},
         onFailure: (ApiResult.Error) -> Unit = {}
     ) {
