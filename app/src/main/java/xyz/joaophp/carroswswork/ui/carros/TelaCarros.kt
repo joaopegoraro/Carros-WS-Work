@@ -89,6 +89,7 @@ fun TelaCarros(
         onRefresh = onRefresh,
         botaoListItem = { carro, carroSalvoBanco ->
             BotaoSalvar(
+                scaffoldState =scaffoldState,
                 emailUsuario = perfil?.email,
                 carroSalvoBanco = carroSalvoBanco,
                 salvarCarro = {
@@ -105,6 +106,7 @@ fun TelaCarros(
 
 @Composable
 private fun BotaoSalvar(
+    scaffoldState: ScaffoldState,
     emailUsuario: String?,
     carroSalvoBanco: Boolean,
     salvarCarro: () -> Unit,
@@ -123,6 +125,7 @@ private fun BotaoSalvar(
         )
     )
 
+    val drawerScope = rememberCoroutineScope()
     var mostrarDialog by remember {
         mutableStateOf(false)
     }
@@ -130,6 +133,11 @@ private fun BotaoSalvar(
         DialogCadastrarEmail(
             onDismiss = {
                 mostrarDialog = false
+            },
+            onConfirm = {
+                drawerScope.launch {
+                    scaffoldState.drawerState.open()
+                }
             }
         )
     }

@@ -8,7 +8,10 @@ import androidx.compose.ui.res.stringResource
 import xyz.joaophp.carroswswork.R
 
 @Composable
-fun DialogCadastrarEmail(onDismiss: () -> Unit) {
+fun DialogCadastrarEmail(
+    onDismiss: () -> Unit,
+    onConfirm: () -> Unit
+) {
     AlertDialog(
         onDismissRequest = onDismiss,
         title = {
@@ -18,7 +21,10 @@ fun DialogCadastrarEmail(onDismiss: () -> Unit) {
             Text(text = stringResource(R.string.email_nao_cadastrado_dilog_texto))
         },
         confirmButton = {
-            Button(onClick = onDismiss) {
+            Button(onClick = {
+                onConfirm()
+                onDismiss()
+            }) {
                 Text(text = stringResource(R.string.ok))
             }
         }
