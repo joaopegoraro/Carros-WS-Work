@@ -7,9 +7,9 @@
   <img src="https://github.com/joaopegoraro/Carros-WS-Work/blob/master/screenshots/screenshot3.png" width="32%" />
 </p>
 <p float="left">
-  <img src="https://github.com/joaopegoraro/Carros-WS-Work/blob/master/screenshots/Screenshot4.jpeg" width="32%" />
-  <img src="https://github.com/joaopegoraro/Carros-WS-Work/blob/master/screenshots/Screenshot5.jpeg" width="32%" />
-  <img src="https://github.com/joaopegoraro/Carros-WS-Work/blob/master/screenshots/Screenshot6.jpeg" width="32%" />
+  <img src="https://github.com/joaopegoraro/Carros-WS-Work/blob/master/screenshots/screenshot4.jpeg" width="32%" />
+  <img src="https://github.com/joaopegoraro/Carros-WS-Work/blob/master/screenshots/screenshot5.jpeg" width="32%" />
+  <img src="https://github.com/joaopegoraro/Carros-WS-Work/blob/master/screenshots/screenshot6.jpeg" width="32%" />
 </p>
 
 ## Arquitetura
