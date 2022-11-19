@@ -16,5 +16,9 @@
     <string name="preco_label">R$ %.2f</string>
     <string name="eu_quero">Eu quero!</string>
 
+    <!-- Topbar -->
+    <string name="cs_logo_ws">Logo WS Work</string>
+    <string name="cs_abrir_drawer">Abrir navegação lateral do aplicativo</string>
+
 
 </resources>

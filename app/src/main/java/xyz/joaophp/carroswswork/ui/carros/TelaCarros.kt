@@ -79,10 +79,7 @@ fun TelaCarros(
         LazyColumn(
             modifier = Modifier.fillMaxSize()
         ) {
-            items(
-                items = carros,
-                key = { carro -> { carro.id } }
-            ) { carro ->
+            items(items = carros) { carro ->
                 CarroListItem(
                     modifier = Modifier.animateItemPlacement(),
                     carro = carro,
