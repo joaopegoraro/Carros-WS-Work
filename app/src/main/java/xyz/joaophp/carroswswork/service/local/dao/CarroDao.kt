@@ -20,9 +20,6 @@ interface CarroDao {
     @Query("SELECT * FROM $CARRO_TABLE ORDER BY $TIMESTAMP_CADASTRO DESC")
     fun getAll(): Flow<List<DBCarro>>
 
-    @Query("SELECT * FROM $CARRO_TABLE WHERE $ID=:id")
-    fun getWithId(id: Int): Flow<DBCarro>
-
     @Query("SELECT * FROM $CARRO_TABLE WHERE $ID in (:ids)")
     fun getAllWithId(ids: List<Int>): Flow<List<DBCarro>>
 

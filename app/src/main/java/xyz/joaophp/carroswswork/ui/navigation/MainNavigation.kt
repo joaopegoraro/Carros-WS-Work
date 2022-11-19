@@ -41,7 +41,9 @@ fun MainNavigation() {
                 )
             }
             composable(NavigationRoutes.TelaMinhaLista.route) {
-                TelaMinhaLista()
+                TelaMinhaLista(
+                    navController = navController
+                )
             }
         }
     }

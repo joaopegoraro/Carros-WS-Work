@@ -11,10 +11,15 @@
     <string name="modelo_desconhecida">Modelo desconhecida</string>
     <string name="desconhecido">Desconhecido</string>
     <string name="combustivel_label">Combustível %s</string>
+    <string name="cor_label">Cor: %s</string>
     <string name="nao_informado">Não informado</string>
     <string name="numero_portas">%d portas</string>
     <string name="preco_label">R$ %.2f</string>
     <string name="eu_quero">Eu quero!</string>
+    <string name="lista_carros_vazia">Nenhum carro encontrado</string>
+    <string name="ops">Ops!</string>
+    <string name="email_nao_cadastrado_dilog_texto">Você precisa cadastrar um e-mail para poder favoritar um carro. Basta arrastar para direita ou clicar no menu na topbar para abrir a drawer e cadastrar seu e-mail. Após cadastrado, tente novamente.</string>
+    <string name="ok">OK</string>
 
     <!-- Topbar -->
     <string name="cs_logo_ws">Logo WS Work</string>
@@ -27,8 +32,11 @@
     <string name="escreva_aqui_seu_email">Escreva aqui seu e-mail</string>
     <string name="carros">Carros</string>
     <string name="minha_lista">Minha lista</string>
-    <string name="cadastre_seu_email">Cadastre com seu email para poder sincronizar sua lista de favoritos com o nosso site!</string>
+    <string name="cadastre_seu_email">Cadastre com seu email para poder favoritar os carros que você tem interesse de comprar</string>
     <string name="email_invalido">Por favor, digite um endereço de e-mail válido</string>
+
+    <!-- Minha Lista -->
+    <string name="minha_lista_vazia">Você ainda não adicionou nenhum carro na sua lista</string>
 
 
 </resources>

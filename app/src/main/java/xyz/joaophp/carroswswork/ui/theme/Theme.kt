@@ -5,6 +5,8 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.material.darkColors
 import androidx.compose.material.lightColors
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import com.google.accompanist.systemuicontroller.rememberSystemUiController
 
 private val DarkColorPalette = darkColors(
     primary = wsBlue,
@@ -38,6 +40,7 @@ private val LightColorPalette = lightColors(
 
 @Composable
 fun CarrosWSWorkTheme(darkTheme: Boolean = isSystemInDarkTheme(), content: @Composable () -> Unit) {
+
     val colors = if (darkTheme) {
         DarkColorPalette
     } else {
@@ -48,6 +51,15 @@ fun CarrosWSWorkTheme(darkTheme: Boolean = isSystemInDarkTheme(), content: @Comp
         colors = colors,
         typography = Typography,
         shapes = Shapes,
-        content = content
+        content = {
+            val systemUiController = rememberSystemUiController()
+            val statusBarColor = MaterialTheme.colors.primary
+            LaunchedEffect(true) {
+                systemUiController.setSystemBarsColor(
+                    color = statusBarColor
+                )
+            }
+            content()
+        }
     )
 }

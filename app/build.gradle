@@ -104,6 +104,7 @@ dependencies {
     // Accompanist
     def accompanist_version = "0.25.1"
     implementation "com.google.accompanist:accompanist-swiperefresh:$accompanist_version"
+    implementation "com.google.accompanist:accompanist-systemuicontroller:$accompanist_version"
 
 
 
