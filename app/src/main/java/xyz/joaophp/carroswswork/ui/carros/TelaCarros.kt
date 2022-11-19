@@ -25,6 +25,7 @@ import kotlinx.coroutines.launch
 import org.koin.androidx.compose.getViewModel
 import xyz.joaophp.carroswswork.R
 import xyz.joaophp.carroswswork.ui.CarroViewModel
+import xyz.joaophp.carroswswork.ui.components.DialogCadastrarEmail
 import xyz.joaophp.carroswswork.ui.components.ListaCarros
 import xyz.joaophp.carroswswork.ui.components.NoResultsFoundLayout
 import xyz.joaophp.carroswswork.ui.theme.wsPink
@@ -40,6 +41,7 @@ fun TelaCarros(
 ) {
     val context = LocalContext.current
     val state = viewModel.state
+    val perfil by state.perfil.collectAsState(initial = null)
     val carros by state.carros.collectAsState(initial = emptyList())
     val leads by state.leads.collectAsState(initial = emptyList())
 
@@ -87,6 +89,7 @@ fun TelaCarros(
         onRefresh = onRefresh,
         botaoListItem = { carro, carroSalvoBanco ->
             BotaoSalvar(
+                emailUsuario = perfil?.email,
                 carroSalvoBanco = carroSalvoBanco,
                 salvarCarro = {
                     viewModel.favoritarCarro(carro)
@@ -102,6 +105,7 @@ fun TelaCarros(
 
 @Composable
 private fun BotaoSalvar(
+    emailUsuario: String?,
     carroSalvoBanco: Boolean,
     salvarCarro: () -> Unit,
     excluirCarro: () -> Unit
@@ -118,6 +122,18 @@ private fun BotaoSalvar(
             repeatMode = RepeatMode.Reverse
         )
     )
+
+    var mostrarDialog by remember {
+        mutableStateOf(false)
+    }
+    if (mostrarDialog) {
+        DialogCadastrarEmail(
+            onDismiss = {
+                mostrarDialog = false
+            }
+        )
+    }
+
     Button(
         modifier = Modifier
             .scale(scale)
@@ -129,10 +145,13 @@ private fun BotaoSalvar(
         onClick = {
             if (carroSalvo) {
                 excluirCarro()
+                carroSalvo = !carroSalvo
+            } else if (emailUsuario.isNullOrEmpty()) {
+                mostrarDialog = true
             } else {
                 salvarCarro()
+                carroSalvo = !carroSalvo
             }
-            carroSalvo = !carroSalvo
         },
     ) {
         Icon(
